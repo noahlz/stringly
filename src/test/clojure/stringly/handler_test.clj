@@ -52,7 +52,7 @@
 
 (fact "about other routes"
   (handler/app (request :get "/"))
-   => (contains {:body "Form will go here."}))
+   => (contains {:body string?}))
 
 (fact "about invalid routes"
   (let [response (handler/app (request :get "/invalid"))]

@@ -33,7 +33,7 @@
   (GET "/stringly" []
     (success (service/list-operations)))
 
-  (GET "/" [] "Form will go here.")
+  (GET "/" [] "Form will go here.<br><a href=\"/stringly\">json/yaml/edn endpoint</a>")
 
   (route/not-found "Not found.")
 
