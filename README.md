@@ -16,7 +16,7 @@ Anyway, this little web application provides an interface to several common stri
 
 ## Prerequisites
 
-- leiningen 2
+- [Leiningen 2](https://github.com/technomancy/leiningen/)
 
 ## Running
 
