@@ -1,1 +1,1 @@
-web: ./start.sh
+web: lein trampoline ring server-headless
