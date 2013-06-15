@@ -2,9 +2,9 @@
   :description "String Functions as-a-Service"
   :url "http://stringly.heroku.com/"
   :dependencies [[org.clojure/clojure "1.5.1"]
-                 [ring "1.2.0-SNAPSHOT"]
-                 [ring-middleware-format "0.3.1-SNAPSHOT"]
-                 [compojure "1.2.0-SNAPSHOT"]]
+                 [ring "1.2.0-beta3"]
+                 [ring-middleware-format "0.3.0"]
+                 [compojure "1.1.5"]]
 
   :source-paths      ["src/main/clojure"]
   :test-paths        ["src/test/clojure"]
@@ -14,8 +14,8 @@
   :injections [(require 'clojure.pprint)]
 
   :plugins [[lein-ring "0.8.5" :exclusions [org.clojure/clojure]]]
-  :ring { :handler stringly.handler/app 
-          :reload-paths ["src/main/clojure" 
+  :ring { :handler stringly.handler/app
+          :reload-paths ["src/main/clojure"
                          "src/main/resources"] }
 
   :profiles {:test {:dependencies [[midje "1.5.1"]
