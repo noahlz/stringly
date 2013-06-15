@@ -35,7 +35,7 @@
 ;; decimal-string?
 
 (defn- char-type [index c]
-  (cond 
+  (cond
     (Character/isDigit c)        :digit
     (and (= \- c) (zero? index)) :negative-sign
     (= \. c)                     :decimal-point))
@@ -53,15 +53,15 @@
       (reduced false))))
 
 (defn decimal-string?
-  "Test if a given string is a decimal, i.e. \"-1.003\" 
-   Does not support commas or leading/trailing whitespace. 
+  "Test if a given string is a decimal, i.e. \"-1.003\"
+   Does not support commas or leading/trailing whitespace.
    Allows zero-padding on either side."
   [s]
   {:post [(instance? Boolean %)]}
   (let [analysis (reduce reduce-decimal-string-fn
                          {:digit 0, :decimal-point 0, :negative-sign 0}
                          (map-indexed vector s))]
-    (if (map? analysis) 
+    (if (map? analysis)
       (pos? (:digit analysis))
       analysis)))
 
