@@ -2,8 +2,6 @@
 
 String Functions as-a-Service.
 
-[![Build Status](https://travis-ci.org/noahlz/stringly.png?branch=master)](https://travis-ci.org/noahlz/stringly)
-
 ## About
 
 Three hardest problems of computer science (Tech Startup Interview Edition):
@@ -25,6 +23,12 @@ Anyway, this little web application provides an interface to several common stri
 To start a web server for the application, run the provided start.sh script or
 
     lein trampoline ring server-headless
+
+## Continuous Integration
+
+[![Build Status](https://travis-ci.org/noahlz/stringly.png?branch=master)](https://travis-ci.org/noahlz/stringly)
+
+CI is hosted by [travis-ci.org](http://travis-ci.org)
 
 ## License
 
