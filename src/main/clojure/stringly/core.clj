@@ -47,7 +47,7 @@
 
 (defn- reduce-decimal-string-fn [m [index c]]
   (let [updated-m (update-reduction m index c)
-        decimal-points (:decimal-point updated-m)]
+        {decimal-points :decimal-point} updated-m]
     (if (#{0 1} decimal-points)
       updated-m
       (reduced false))))
