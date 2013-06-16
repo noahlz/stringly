@@ -1,6 +1,6 @@
 # String.ly 
 
-String-manipulation-and-analysis-as-a-Service.
+String Functions as-a-Service.
 
 ## About
 
@@ -10,9 +10,9 @@ Three hardest problems of computer science (Tech Startup Interview Edition):
   2. Cache Invalidation
   3. Reverse a String Recursively
 
-It seems like lots of tech startups having trouble with strings. Across the nation, startups of all business models and technology platforms are asking their job applicants how to reverse a string recursively or detect a palindrome. What's up with that? You think they would've figured all that stuff out by now!
+It seems like lots of tech startups having trouble with strings. Across the nation, startups of all business models and technology platforms are asking their job applicants how to reverse a string recursively or detect a palindrome. What's up with that? You think they'd have all that stuff figured  out by now!
 
-Anyway, this little web application provides an interface to several common string functions via a little JSON API - for the web developer on-the-go. Enhancements welcome! 
+Anyway, this little web application provides an interface to several common string functions via a little json API - for the web developer on-the-go. Contributions welcome!
 
 ## Prerequisites
 
