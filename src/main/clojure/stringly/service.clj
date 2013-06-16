@@ -4,7 +4,7 @@
 (def ^:private stringly-fns
   (let [metadata (->> (ns-publics 'stringly.core) vals (map meta))]
     (map (fn [{n :name [args] :arglists}] ;; only the first arg signature
-           {:name n :arity (count args)})
+           {:name (str n) :arity (count args)})
          metadata)))
 
 (def ^:private stringly-fn-names
