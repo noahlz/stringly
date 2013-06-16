@@ -2,6 +2,8 @@
 
 String Functions as-a-Service.
 
+[![Build Status](https://travis-ci.org/noahlz/stringly.png?branch=master)](https://travis-ci.org/noahlz/stringly)
+
 ## About
 
 Three hardest problems of computer science (Tech Startup Interview Edition):
