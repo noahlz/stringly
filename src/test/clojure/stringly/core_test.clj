@@ -22,3 +22,7 @@
   (decimal-string? "--0") => false
   (decimal-string? "00.00") => true
   (decimal-string? "1..0") => false)
+
+(future-facts
+  (longest-common-substring "AABC" "ABCA") => "ABC"
+  (longest-common-substring "" "A") => nil)

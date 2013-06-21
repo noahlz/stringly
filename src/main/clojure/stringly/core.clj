@@ -26,10 +26,14 @@
           candidates (partition (count sub) 1 s)]
       (not (nil? (first (filter #(= sub %) candidates)))))))
 
+(defn longest-common-substring [s1 s2]
+  ;; http://bit.ly/19mgUfY - although a suffix tree would be more interesting
+  nil)
+
 (defn longest-repeated-string [s]
- (apply str
-   (let [xs (partition-by identity s)]
-     (reduce #(if (> (count %1) (count %2)) %1 %2) '() xs))))
+  (apply str
+    (let [xs (partition-by identity s)]
+      (reduce #(if (> (count %1) (count %2)) %1 %2) '() xs))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; decimal-string?
