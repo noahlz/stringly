@@ -8,11 +8,11 @@ Three hardest problems of computer science (Tech Startup Interview Edition):
 
   1. Naming
   2. Cache Invalidation
-  3. Reverse a String Recursively
+  3. Reversing a String Recursively
 
-It seems like lots of tech startups are having trouble with strings. Across the nation, startups of all business models and technology platforms are asking their job applicants how to reverse a string recursively or detect a palindrome. What's up with that? You think they'd have all that stuff figured  out by now!
+It seems like lots of tech startups are having trouble with strings. Across the nation, startups of all business models and technology platforms are asking their job applicants how to reverse a string recursively or detect a palindrome. What's up with that? You think they'd have all that stuff figured out by now!
 
-Anyway, this little web application provides an interface to several common string functions via a little json API - for the web developer on-the-go. Contributions welcome!
+Anyway, this little web application provides an interface to several common string functions via a json API - for the web developer on-the-go. Contributions welcome!
 
 ## Prerequisites
 
