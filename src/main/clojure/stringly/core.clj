@@ -12,6 +12,19 @@
 (defn disenvowel [s]
   (apply str (remove #{\a \e \i \o \u} s)))
 
+(defn rot13 [s]
+  (apply str
+    (for [c s]
+      (let [idx (int c)
+            A (int \A) Z (int \Z)
+            a (int \a) z (int \z)
+            is-ascii-letter (or (and (>= idx A) (<= idx Z)) 
+                                (and (>= idx a) (<= idx z)))] 
+        (if is-ascii-letter
+          (let [offset (if (Character/isUpperCase c) A a)]
+            (-> (- (int c) offset) (+ 13) (mod 26) (+ offset) char))
+          c)))))
+
 (defn letter-frequencies [s]
   (frequencies (seq s)))
 
@@ -27,7 +40,7 @@
       (not (nil? (first (filter #(= sub %) candidates)))))))
 
 (defn longest-common-substring [s1 s2]
-  ;; http://bit.ly/19mgUfY - although a suffix tree would be more interesting
+  ;; See http://bit.ly/19mgUfY - although a suffix tree would be more interesting
   nil)
 
 (defn longest-repeated-string [s]

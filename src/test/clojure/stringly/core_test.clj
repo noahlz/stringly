@@ -21,7 +21,9 @@
   (decimal-string? "-0-") => false
   (decimal-string? "--0") => false
   (decimal-string? "00.00") => true
-  (decimal-string? "1..0") => false)
+  (decimal-string? "1..0") => false
+  (rot13 "The Quick Brown Fox Jumps Over The Lazy Dog!") 
+      => "Gur Dhvpx Oebja Sbk Whzcf Bire Gur Ynml Qbt!")
 
 (future-facts
   (longest-common-substring "AABC" "ABCA") => "ABC"
