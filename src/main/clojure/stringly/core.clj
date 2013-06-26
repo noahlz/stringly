@@ -14,7 +14,7 @@
 
 (defn rot13 [s]
   (apply str
-    (for [c s]
+    (for [^char c s]
       (let [idx (int c)
             A (int \A) Z (int \Z)
             a (int \a) z (int \z)
@@ -22,7 +22,7 @@
                                 (and (>= idx a) (<= idx z)))] 
         (if is-ascii-letter
           (let [offset (if (Character/isUpperCase c) A a)]
-            (-> (- (int c) offset) (+ 13) (mod 26) (+ offset) char))
+            (-> (- idx offset) (+ 13) (mod 26) (+ offset) char))
           c)))))
 
 (defn letter-frequencies [s]
@@ -51,7 +51,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; decimal-string?
 
-(defn- char-type [index c]
+(defn- char-type [index ^Character c]
   (cond
     (Character/isDigit c)        :digit
     (and (= \- c) (zero? index)) :negative-sign
