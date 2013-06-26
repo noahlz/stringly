@@ -39,8 +39,12 @@
           candidates (partition (count sub) 1 s)]
       (not (nil? (first (filter #(= sub %) candidates)))))))
 
+;; TODO...
 (defn longest-common-substring [s1 s2]
-  ;; See http://bit.ly/19mgUfY - although a suffix tree would be more interesting
+  ;; See this solution by @cgrande 
+  ;; http://stackoverflow.com/a/14958791/7507
+  ;; Clojure mailing list discussion: 
+  ;; https://groups.google.com/forum/#!topic/clojure/byHO-9t6X4U[1-25-false]
   nil)
 
 (defn longest-repeated-string [s]
