@@ -23,17 +23,17 @@
       (handle-error e)))))
 
 (defroutes app-routes
-  (POST "/stringly" [f args]
+  (POST "/api" [f args]
     (if (or (nil? f) (nil? args))
       (handle-error "Parameters 'f' and 'args' required.")
       (try (success (service/invoke f args))
         (catch IllegalArgumentException ex (handle-error ex))
         (catch AssertionError err (handle-error err)))))
 
-  (GET "/stringly" []
+  (GET "/api" []
     (success (service/list-operations)))
 
-  (GET "/" [] "Form will go here.<br><a href=\"/stringly\">json/yaml/edn endpoint</a>")
+  (GET "/" [] "Form will go here.<br><a href=\"/api\">json/yaml/edn endpoint</a>")
 
   (route/not-found "Not found.")
 
