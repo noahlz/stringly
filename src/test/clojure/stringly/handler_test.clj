@@ -11,7 +11,7 @@
                                expected-result#]
   `(fact (str "POST " ~request-body#)
      (let [{status# :status response-body# :body}
-              (handler/app (-> (request :post "/stringly")
+              (handler/app (-> (request :post "/api")
                                (body ~request-body#)
                                (header "Accept" "application/json")
                                (content-type "application/json")))]
@@ -22,7 +22,7 @@
 
 (facts "about the stringly service"
   (fact "stringly GET handles json content / accept"
-    (let [response (handler/app (-> (request :get  "/stringly")
+    (let [response (handler/app (-> (request :get  "/api")
                                     (header "Accept" "application/json")
                                     (content-type "application/json")))]
       (:status response) => 200
