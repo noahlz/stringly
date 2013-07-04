@@ -10,7 +10,8 @@
   (Util/reverseWords s))
 
 (defn disenvowel [s]
-  (apply str (remove #{\a \e \i \o \u} s)))
+  (apply str (remove #{\a \e \i \o \u 
+                       \A \E \I \O \U} s)))
 
 (defn rot13 [s]
   (apply str

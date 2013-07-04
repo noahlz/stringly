@@ -6,6 +6,7 @@
   (reverse-string "abcd") => "dcba"
   (reverse-words "The rain in Spain.") => "ehT niar ni niapS."
   (disenvowel "abcde") => "bcd"
+  ( disenvowel "AbcdEoOUiIy") => "bcdy"
   (letter-frequencies "aaabbbbccd") => {\a 3, \b 4, \c 2, \d 1}
   (palindrome? "aabaa") => true
   (palindrome? "aabac") => false
