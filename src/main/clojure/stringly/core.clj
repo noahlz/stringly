@@ -2,18 +2,20 @@
   "String functions as-a-Service"
   (:import stringly.core.Util))
 
-(defn reverse-string [s]
+;; functions annotated with ^:api are exported to the web service in service.clj
+
+(defn ^:api reverse-string [s]
   ;; just using "reverse" would be boring.
   (clojure.string/join (reduce conj '() s)))
 
-(defn reverse-words [s]
+(defn ^:api reverse-words [s]
   (Util/reverseWords s))
 
-(defn disenvowel [s]
+(defn ^:api disenvowel [s]
   (apply str (remove #{\a \e \i \o \u 
                        \A \E \I \O \U} s)))
 
-(defn rot13 [s]
+(defn ^:api rot13 [s]
   (apply str
     (for [^char c s]
       (let [idx (int c)
@@ -26,14 +28,15 @@
             (-> (- idx offset) (+ 13) (mod 26) (+ offset) char))
           c)))))
 
-(defn letter-frequencies [s]
-  (frequencies (seq s)))
+(defn ^:api letter-frequencies [s]
+  (let [s (filter #(Character/isLetter %) s)]
+    (frequencies s)))
 
-(defn palindrome? [s]
+(defn ^:api palindrome? [s]
   (if-let [s (seq s)]
     (= s (reverse s))))
 
-(defn substring? [sub s]
+(defn ^:api substring? [sub s]
   (if (> (count sub) (count s))
     false
     (let [sub (seq sub)
@@ -41,14 +44,14 @@
       (not (nil? (first (filter #(= sub %) candidates)))))))
 
 ;; TODO...
-(defn longest-common-substring [s1 s2]
+(defn ^:api longest-common-substring [s1 s2]
   ;; See this solution by @cgrande 
   ;; http://stackoverflow.com/a/14958791/7507
   ;; Clojure mailing list discussion: 
   ;; https://groups.google.com/forum/#!topic/clojure/byHO-9t6X4U[1-25-false]
   nil)
 
-(defn longest-repeated-string [s]
+(defn ^:api longest-repeated-string [s]
   (apply str
     (let [xs (partition-by identity s)]
       (reduce #(if (> (count %1) (count %2)) %1 %2) '() xs))))
@@ -74,7 +77,7 @@
       updated-m
       (reduced false))))
 
-(defn decimal-string?
+(defn ^:api decimal-string?
   "Test if a given string is a decimal, i.e. \"-1.003\"
    Does not support commas or leading/trailing whitespace.
    Allows zero-padding on either side."
