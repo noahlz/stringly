@@ -2,7 +2,10 @@
   (:require stringly.core))
 
 (def ^:private stringly-fns
-  (let [metadata (->> (ns-publics 'stringly.core) vals (map meta))]
+  (let [metadata (->> (ns-publics 'stringly.core) 
+                      vals 
+                      (filter #(:api (meta %))) 
+                      (map meta))]
     (map (fn [{n :name [args] :arglists}] 
            {:name (str n) :arity (count args)})
          metadata)))

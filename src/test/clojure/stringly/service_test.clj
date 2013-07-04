@@ -3,6 +3,7 @@
         midje.sweet))
 
 (fact "about list-operations"
+  (count (list-operations)) => pos?
   (list-operations)
     => (has every? (fn [{:keys [name arity]}] (and name arity))))
 
