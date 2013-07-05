@@ -43,14 +43,6 @@
           candidates (partition (count sub) 1 s)]
       (not (nil? (first (filter #(= sub %) candidates)))))))
 
-;; TODO...
-(defn ^:api longest-common-substring [s1 s2]
-  ;; See this solution by @cgrande 
-  ;; http://stackoverflow.com/a/14958791/7507
-  ;; Clojure mailing list discussion: 
-  ;; https://groups.google.com/forum/#!topic/clojure/byHO-9t6X4U[1-25-false]
-  nil)
-
 (defn ^:api longest-repeated-string [s]
   (apply str
     (let [xs (partition-by identity s)]
@@ -90,3 +82,27 @@
       (pos? (:digit analysis))
       analysis)))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; longest-common-substring - not idiomatic! 
+
+;; Adapted from this Common Lisp implementation: http://bit.ly/19mgUfY
+;; Also see this Clojure mailing list discussion on performance: 
+;; https://groups.google.com/forum/#!topic/clojure/byHO-9t6X4U[1-25-false]
+(defn ^:api longest-common-substring [^String s1 ^String s2]
+  (let [len1 (count s1)
+        len2 (count s2)
+        L (make-array Long/TYPE len1 len2)
+        z (atom 0)                         ;; ugh.
+        result (java.util.LinkedHashSet.)] ;; also ugh.
+    (dotimes [i len1]
+      (dotimes [j len2]
+        (when (= (.charAt s1 i) (.charAt s2 j))
+          (aset-int L i j (if (or (zero? i) (zero? j))
+                          1
+                          (unchecked-inc (aget L (unchecked-dec i) (unchecked-dec j))))))
+        (when (> (aget L i j) @z)
+          (swap! z (fn [a newval] newval) (aget L i j))
+          (.clear result))
+        (when (= (aget L i j) @z)
+          (.add result (.substring s1 (unchecked-inc (- i @z)) (unchecked-inc i))))))
+    (first result)))

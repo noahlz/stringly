@@ -25,8 +25,11 @@
   (decimal-string? "00.00") => true
   (decimal-string? "1..0") => false
   (rot13 "The Quick Brown Fox Jumps Over The Lazy Dog!") 
-      => "Gur Dhvpx Oebja Sbk Whzcf Bire Gur Ynml Qbt!")
-
-(future-facts
+      => "Gur Dhvpx Oebja Sbk Whzcf Bire Gur Ynml Qbt!"
   (longest-common-substring "AABC" "ABCA") => "ABC"
-  (longest-common-substring "" "A") => nil)
+  (longest-common-substring "ABABC" "BABCA") => "BABC"
+  (longest-common-substring "aaaAABC" "ABCaaaA") => "aaaA"
+  (longest-common-substring "C" "ZZZZzzzZZZCA") => "C"
+  (longest-common-substring "ZZZZzzzZZZCA" "C") => "C"
+  (longest-common-substring "" "A") => empty?
+  (longest-common-substring "A" "") => empty?)
