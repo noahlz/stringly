@@ -105,9 +105,10 @@
                                                       (inc (aget L (dec i) (dec j))))) 
                                   longer-than-z? (> currlongest z)
                                   z (if longer-than-z? currlongest z)
-                                  result (if longer-than-z? #{} result)
-                                  substr (.substring s1 (inc (- i z)) (inc i))]
-                              [z (if (>= currlongest z) (conj result substr) result)])
+                                  result (if longer-than-z? #{} result)]
+                              [z (if (>= currlongest z) 
+                                   (conj result (.substring s1 (inc (- i z)) (inc i))) 
+                                   result)])
                             [z result]))
                    [z result]))) 
         (vec (fnext z-and-result))))))
