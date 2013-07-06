@@ -88,21 +88,26 @@
 ;; Adapted from this Common Lisp implementation: http://bit.ly/19mgUfY
 ;; Also see this Clojure mailing list discussion on performance: 
 ;; https://groups.google.com/forum/#!topic/clojure/byHO-9t6X4U[1-25-false]
-(defn ^:api longest-common-substring [^String s1 ^String s2]
-  (let [len1 (count s1)
-        len2 (count s2)
-        L (make-array Long/TYPE len1 len2)
-        z (atom 0)                         ;; ugh.
-        result (java.util.LinkedHashSet.)] ;; also ugh.
-    (dotimes [i len1]
-      (dotimes [j len2]
-        (when (= (.charAt s1 i) (.charAt s2 j))
-          (aset-int L i j (if (or (zero? i) (zero? j))
-                          1
-                          (unchecked-inc (aget L (unchecked-dec i) (unchecked-dec j))))))
-        (when (> (aget L i j) @z)
-          (swap! z (fn [a newval] newval) (aget L i j))
-          (.clear result))
-        (when (= (aget L i j) @z)
-          (.add result (.substring s1 (unchecked-inc (- i @z)) (unchecked-inc i))))))
-    (first result)))
+(defn ^:api longest-common-substrings [^String s1 ^String s2]
+  (let [s1len (count s1)
+        s2len (count s2)
+        L (make-array Long/TYPE s1len s2len)]
+    (loop [i 0 z-and-result [0 #{}]]
+      (if (< i s1len)
+        (recur (inc i) 
+               (loop [j 0 [z result] z-and-result]
+                 (if (< j s2len)
+                   (recur (inc j)
+                          (if (= (.charAt s1 i) (.charAt s2 j))
+                            (let [currlongest 
+                                   (aset-long L i j (if (or (zero? i) (zero? j))
+                                                      1
+                                                      (inc (aget L (dec i) (dec j))))) 
+                                  longer-than-z? (> currlongest z)
+                                  z (if longer-than-z? currlongest z)
+                                  result (if longer-than-z? #{} result)
+                                  substr (.substring s1 (inc (- i z)) (inc i))]
+                              [z (if (>= currlongest z) (conj result substr) result)])
+                            [z result]))
+                   [z result]))) 
+        (vec (fnext z-and-result))))))

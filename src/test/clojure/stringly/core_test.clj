@@ -26,10 +26,12 @@
   (decimal-string? "1..0") => false
   (rot13 "The Quick Brown Fox Jumps Over The Lazy Dog!") 
       => "Gur Dhvpx Oebja Sbk Whzcf Bire Gur Ynml Qbt!"
-  (longest-common-substring "AABC" "ABCA") => "ABC"
-  (longest-common-substring "ABABC" "BABCA") => "BABC"
-  (longest-common-substring "aaaAABC" "ABCaaaA") => "aaaA"
-  (longest-common-substring "C" "ZZZZzzzZZZCA") => "C"
-  (longest-common-substring "ZZZZzzzZZZCA" "C") => "C"
-  (longest-common-substring "" "A") => empty?
-  (longest-common-substring "A" "") => empty?)
+  (longest-common-substrings "AABC" "ABCA") => ["ABC"]
+  (longest-common-substrings "ABABC" "BABCA") => ["BABC"]
+  (longest-common-substrings "aaaAABC" "ABCaaaA") => ["aaaA"]
+  (longest-common-substrings "C" "ZZZZzzzZZZCA") => ["C"]
+  (longest-common-substrings "ZZZZzzzZZZCA" "C") => ["C"]
+  (longest-common-substrings "" "A") => empty?
+  (longest-common-substrings "A" "") => empty?
+  (longest-common-substrings "AAATABBD" "AAAZABBC") => ["AAA" "ABB"]
+  (longest-common-substrings "AABBAACC" "ZAAZBBZCC") => ["AA" "BB" "CC"])

@@ -40,6 +40,9 @@
   (check-stringly-post "{\"f\":\"substring?\",\"args\":[\"bbb\",\"aabbbbbaa\"]}"
                        200 "{\"result\":true}")
 
+  (check-stringly-post "{\"f\":\"longest-common-substrings\",\"args\":[\"AAZBB\",\"AATBB\"]}"
+                       200 "{\"result\":[\"AA\",\"BB\"]}")
+
   (check-stringly-post "{\"f\":\"letter-frequencies\",\"args\":[\"aabbbbbc\"]}"
                        200 "{\"result\":{\"a\":2,\"b\":5,\"c\":1}}"))
 
