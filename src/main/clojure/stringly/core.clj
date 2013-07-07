@@ -28,13 +28,9 @@
             (-> (- idx offset) (+ 13) (mod 26) (+ offset) char))
           c)))))
 
-;; is there a more compact way of writing this?
-(defn- is-letter-no-reflection [c]
-  (let [^char c c] 
-    (Character/isLetter c)))
-
+;; See https://gist.github.com/noahlz/5943779
 (defn ^:api letter-frequencies [s]
-  (let [s (filter is-letter-no-reflection s)]
+  (let [s (filter #(Character/isLetter (char %)) s)]
     (frequencies s)))
 
 (defn ^:api palindrome? [s]
