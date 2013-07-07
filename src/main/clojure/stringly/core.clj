@@ -88,27 +88,28 @@
 ;; Adapted from this Common Lisp implementation: http://bit.ly/19mgUfY
 ;; Also see this Clojure mailing list discussion on performance: 
 ;; https://groups.google.com/forum/#!topic/clojure/byHO-9t6X4U[1-25-false]
-(defn ^:api longest-common-substrings [^String s1 ^String s2]
-  (let [s1len (count s1)
-        s2len (count s2)
-        L (make-array Long/TYPE s1len s2len)]
-    (loop [i 0 z-and-result [0 #{}]]
-      (if (< i s1len)
-        (recur (inc i) 
-               (loop [j 0 [z result] z-and-result]
-                 (if (< j s2len)
-                   (recur (inc j)
-                          (if (= (.charAt s1 i) (.charAt s2 j))
-                            (let [currlongest 
-                                   (aset-long L i j (if (or (zero? i) (zero? j))
-                                                      1
-                                                      (inc (aget L (dec i) (dec j))))) 
-                                  longer-than-z? (> currlongest z)
-                                  z (if longer-than-z? currlongest z)
-                                  result (if longer-than-z? #{} result)]
-                              [z (if (>= currlongest z) 
-                                   (conj result (.substring s1 (inc (- i z)) (inc i))) 
-                                   result)])
-                            [z result]))
-                   [z result]))) 
-        (vec (fnext z-and-result))))))
+(defn- find-lcs-fn [^String s1 ^String s2 ^longs table] ;; <== closure!
+  (fn [[z result] i]
+    (reduce  
+      (fn [[z result] j] 
+        (if (= (.charAt s1 i) (.charAt s2 j))
+          (let [curr-longest (aset-long table i j 
+                               (if (or (zero? i) (zero? j))
+                                 1
+                                 (inc (aget table (dec i) (dec j))))) 
+                longer-than-z? (> curr-longest z)
+                z              (if longer-than-z? curr-longest z)
+                result         (if longer-than-z? #{} result)]
+            [z (if (>= curr-longest z) 
+                 (conj result (.substring s1 (inc (- i z)) (inc i))) 
+                 result)])
+          [z result])) 
+      [z result] 
+      (range (count s2)))))
+
+(defn ^:api longest-common-substrings 
+  "Returns vector of longest common substrings for the two input strings."
+  [^String s1 ^String s2]
+    (let [table (make-array Long/TYPE (count s1) (count s2))
+          result (reduce (find-lcs-fn s1 s2 table) [0 #{}] (range (count s1)))]
+      (vec (fnext result))))
