@@ -28,10 +28,9 @@
             (-> (- idx offset) (+ 13) (mod 26) (+ offset) char))
           c)))))
 
-;; See https://gist.github.com/noahlz/5943779
+;; See https://gist.github.com/noahlz/5944853 
 (defn ^:api letter-frequencies [s]
-  (let [s (filter #(Character/isLetter (char %)) s)]
-    (frequencies s)))
+  (frequencies (filter #(Character/isLetter ^char %) s)))
 
 (defn ^:api palindrome? [s]
   (if-let [s (seq s)]
