@@ -28,8 +28,13 @@
             (-> (- idx offset) (+ 13) (mod 26) (+ offset) char))
           c)))))
 
+;; is there a more compact way of writing this?
+(defn- is-letter-no-reflection [c]
+  (let [^char c c] 
+    (Character/isLetter c)))
+
 (defn ^:api letter-frequencies [s]
-  (let [s (filter #(Character/isLetter %) s)]
+  (let [s (filter is-letter-no-reflection s)]
     (frequencies s)))
 
 (defn ^:api palindrome? [s]
@@ -41,7 +46,7 @@
     false
     (let [sub (seq sub)
           candidates (partition (count sub) 1 s)]
-      (not (nil? (first (filter #(= sub %) candidates)))))))
+      (not (nil? (first (filter #{sub} candidates)))))))
 
 (defn ^:api longest-repeated-string [s]
   (apply str

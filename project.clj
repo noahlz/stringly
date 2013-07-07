@@ -23,7 +23,9 @@
                                    [ring-mock "0.1.4"]]
                     :plugins [[lein-midje "3.0.1"]]}
              :dev [:test {:repl-options
-                           {:init (do (use 'midje.repl) (autotest))}}]}
+                           {:init (do (use 'midje.repl) (autotest))}}]
+             :perf {:plugins [[perforate "0.3.2"]]}}
 
   :aliases {"midje" ["with-profile" "test" "midje"]
-            "test" ["with-profile" "test" "midje"]})
+            "test" ["with-profile" "test" "midje"]
+            "perf" ["with-profile" "perf" "perforate"]})
