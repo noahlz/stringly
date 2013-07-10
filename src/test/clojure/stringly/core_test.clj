@@ -33,5 +33,9 @@
   (longest-common-substrings "ZZZZzzzZZZCA" "C") => ["C"]
   (longest-common-substrings "" "A") => empty?
   (longest-common-substrings "A" "") => empty?
-  (longest-common-substrings "AAATABBD" "AAAZABBC") => ["AAA" "ABB"]
-  (longest-common-substrings "AABBAACC" "ZAAZBBZCC") => ["AA" "BB" "CC"])
+  (longest-common-substrings "AAATABBD" "AAAZABBC") => (contains  #{"AAA" "ABB"})
+  (longest-common-substrings "AABBAACC" "ZAAZBBZCC") => (contains  #{"AA" "BB" "CC"})
+  (longest-common-substrings "AABBCCDDEEFFFFFFFF"
+                             "ZZBBYYDDXXFFFFFFFF") => ["FFFFFFFF"]
+  (longest-common-substrings "AABBCCDDEEFFFFFFFF"
+                             "FFFFFFFFZZBBYYDDXX") => ["FFFFFFFF"])
