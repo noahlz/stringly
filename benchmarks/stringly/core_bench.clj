@@ -1,4 +1,4 @@
-(ns stringly.benchmarks
+(ns stringly.core-bench
   (:require [perforate.core :refer [defgoal defcase]]
             [stringly.core :refer :all]))
 
