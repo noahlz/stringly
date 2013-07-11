@@ -1,0 +1,242 @@
+Performing task 'perf' with profile(s): 'default,base,system,user,provided,test,dev,perf'
+Performing task 'perforate' with profile(s): 'perf'
+======================
+Goal:  longest-common-substrings
+-----
+Case:  :multiple-matches
+Evaluation count : 82740 in 60 samples of 1379 calls.
+             Execution time mean : 723.539117 µs
+    Execution time std-deviation : 7.130966 µs
+   Execution time lower quantile : 720.000529 µs ( 2.5%)
+   Execution time upper quantile : 733.240679 µs (97.5%)
+
+Found 6 outliers in 60 samples (10.0000 %)
+	low-severe	 1 (1.6667 %)
+	low-mild	 3 (5.0000 %)
+	high-mild	 2 (3.3333 %)
+ Variance from outliers : 1.6389 % Variance is slightly inflated by outliers
+
+Case:  :progressively-longer-matches
+Evaluation count : 24300 in 60 samples of 405 calls.
+             Execution time mean : 2.473155 ms
+    Execution time std-deviation : 8.547111 µs
+   Execution time lower quantile : 2.461651 ms ( 2.5%)
+   Execution time upper quantile : 2.489827 ms (97.5%)
+
+Found 1 outliers in 60 samples (1.6667 %)
+	low-severe	 1 (1.6667 %)
+ Variance from outliers : 1.6389 % Variance is slightly inflated by outliers
+
+Case:  :one-match-longest-at-end
+Evaluation count : 20880 in 60 samples of 348 calls.
+             Execution time mean : 2.883605 ms
+    Execution time std-deviation : 12.354964 µs
+   Execution time lower quantile : 2.860546 ms ( 2.5%)
+   Execution time upper quantile : 2.914218 ms (97.5%)
+
+Found 3 outliers in 60 samples (5.0000 %)
+	low-severe	 1 (1.6667 %)
+	low-mild	 2 (3.3333 %)
+ Variance from outliers : 1.6389 % Variance is slightly inflated by outliers
+
+Case:  :no-matches
+Evaluation count : 887040 in 60 samples of 14784 calls.
+             Execution time mean : 67.594858 µs
+    Execution time std-deviation : 446.052119 ns
+   Execution time lower quantile : 67.379666 µs ( 2.5%)
+   Execution time upper quantile : 67.953717 µs (97.5%)
+
+Found 3 outliers in 60 samples (5.0000 %)
+	low-severe	 2 (3.3333 %)
+	low-mild	 1 (1.6667 %)
+ Variance from outliers : 1.6389 % Variance is slightly inflated by outliers
+
+Case:  :one-match-longest-at-end-java-close-to-the-metal
+Evaluation count : 8093160 in 60 samples of 134886 calls.
+             Execution time mean : 7.431292 µs
+    Execution time std-deviation : 21.056334 ns
+   Execution time lower quantile : 7.365930 µs ( 2.5%)
+   Execution time upper quantile : 7.462991 µs (97.5%)
+
+Found 5 outliers in 60 samples (8.3333 %)
+	low-severe	 2 (3.3333 %)
+	low-mild	 1 (1.6667 %)
+	high-mild	 2 (3.3333 %)
+ Variance from outliers : 1.6389 % Variance is slightly inflated by outliers
+
+Case:  :one-match
+Evaluation count : 76320 in 60 samples of 1272 calls.
+             Execution time mean : 787.663991 µs
+    Execution time std-deviation : 1.424089 µs
+   Execution time lower quantile : 785.581789 µs ( 2.5%)
+   Execution time upper quantile : 790.927524 µs (97.5%)
+
+Found 3 outliers in 60 samples (5.0000 %)
+	low-severe	 3 (5.0000 %)
+ Variance from outliers : 1.6389 % Variance is slightly inflated by outliers
+
+Goal:  longest-repeated-string
+-----
+Case:  :default
+Evaluation count : 5065440 in 60 samples of 84424 calls.
+             Execution time mean : 11.860380 µs
+    Execution time std-deviation : 28.109082 ns
+   Execution time lower quantile : 11.786681 µs ( 2.5%)
+   Execution time upper quantile : 11.905173 µs (97.5%)
+
+Found 3 outliers in 60 samples (5.0000 %)
+	low-severe	 1 (1.6667 %)
+	low-mild	 1 (1.6667 %)
+	high-mild	 1 (1.6667 %)
+ Variance from outliers : 1.6389 % Variance is slightly inflated by outliers
+
+Goal:  rot13
+-----
+Case:  :default
+Evaluation count : 3541920 in 60 samples of 59032 calls.
+             Execution time mean : 16.918946 µs
+    Execution time std-deviation : 121.294982 ns
+   Execution time lower quantile : 16.781233 µs ( 2.5%)
+   Execution time upper quantile : 17.090756 µs (97.5%)
+
+Found 1 outliers in 60 samples (1.6667 %)
+	low-severe	 1 (1.6667 %)
+ Variance from outliers : 1.6389 % Variance is slightly inflated by outliers
+
+Goal:  letter-frequencies
+-----
+Case:  :default
+Evaluation count : 5948700 in 60 samples of 99145 calls.
+             Execution time mean : 10.069117 µs
+    Execution time std-deviation : 18.376688 ns
+   Execution time lower quantile : 10.042846 µs ( 2.5%)
+   Execution time upper quantile : 10.106798 µs (97.5%)
+
+Found 3 outliers in 60 samples (5.0000 %)
+	low-severe	 2 (3.3333 %)
+	low-mild	 1 (1.6667 %)
+ Variance from outliers : 1.6389 % Variance is slightly inflated by outliers
+
+Goal:  substring?
+-----
+Case:  :true-case
+Evaluation count : 12232740 in 60 samples of 203879 calls.
+             Execution time mean : 4.893390 µs
+    Execution time std-deviation : 11.589607 ns
+   Execution time lower quantile : 4.873453 µs ( 2.5%)
+   Execution time upper quantile : 4.905452 µs (97.5%)
+
+Found 4 outliers in 60 samples (6.6667 %)
+	low-severe	 1 (1.6667 %)
+	low-mild	 1 (1.6667 %)
+	high-mild	 1 (1.6667 %)
+	high-severe	 1 (1.6667 %)
+ Variance from outliers : 1.6389 % Variance is slightly inflated by outliers
+
+Case:  :false-case
+Evaluation count : 8006520 in 60 samples of 133442 calls.
+             Execution time mean : 7.524198 µs
+    Execution time std-deviation : 62.159196 ns
+   Execution time lower quantile : 7.488405 µs ( 2.5%)
+   Execution time upper quantile : 7.540203 µs (97.5%)
+
+Found 4 outliers in 60 samples (6.6667 %)
+	low-severe	 2 (3.3333 %)
+	low-mild	 1 (1.6667 %)
+	high-mild	 1 (1.6667 %)
+ Variance from outliers : 1.6389 % Variance is slightly inflated by outliers
+
+Goal:  decimal-string?
+-----
+Case:  :false-case
+Evaluation count : 8015820 in 60 samples of 133597 calls.
+             Execution time mean : 7.518451 µs
+    Execution time std-deviation : 10.552499 ns
+   Execution time lower quantile : 7.497857 µs ( 2.5%)
+   Execution time upper quantile : 7.540077 µs (97.5%)
+
+Found 1 outliers in 60 samples (1.6667 %)
+	low-severe	 1 (1.6667 %)
+ Variance from outliers : 1.6389 % Variance is slightly inflated by outliers
+
+Case:  :true-case
+Evaluation count : 7065660 in 60 samples of 117761 calls.
+             Execution time mean : 8.541247 µs
+    Execution time std-deviation : 16.553532 ns
+   Execution time lower quantile : 8.519385 µs ( 2.5%)
+   Execution time upper quantile : 8.569099 µs (97.5%)
+
+Found 1 outliers in 60 samples (1.6667 %)
+	low-severe	 1 (1.6667 %)
+ Variance from outliers : 1.6389 % Variance is slightly inflated by outliers
+
+Goal:  disenvowel
+-----
+Case:  :default
+Evaluation count : 7287420 in 60 samples of 121457 calls.
+             Execution time mean : 8.239950 µs
+    Execution time std-deviation : 25.382638 ns
+   Execution time lower quantile : 8.188484 µs ( 2.5%)
+   Execution time upper quantile : 8.267326 µs (97.5%)
+
+Found 5 outliers in 60 samples (8.3333 %)
+	low-severe	 1 (1.6667 %)
+	low-mild	 2 (3.3333 %)
+	high-mild	 1 (1.6667 %)
+	high-severe	 1 (1.6667 %)
+ Variance from outliers : 1.6389 % Variance is slightly inflated by outliers
+
+Goal:  palindrome?
+-----
+Case:  :true-case
+Evaluation count : 25157340 in 60 samples of 419289 calls.
+             Execution time mean : 2.391311 µs
+    Execution time std-deviation : 4.079631 ns
+   Execution time lower quantile : 2.385060 µs ( 2.5%)
+   Execution time upper quantile : 2.401215 µs (97.5%)
+
+Found 4 outliers in 60 samples (6.6667 %)
+	low-severe	 1 (1.6667 %)
+	low-mild	 3 (5.0000 %)
+ Variance from outliers : 1.6389 % Variance is slightly inflated by outliers
+
+Case:  :false-case
+Evaluation count : 27637800 in 60 samples of 460630 calls.
+             Execution time mean : 2.173406 µs
+    Execution time std-deviation : 5.039797 ns
+   Execution time lower quantile : 2.163814 µs ( 2.5%)
+   Execution time upper quantile : 2.184235 µs (97.5%)
+
+Found 2 outliers in 60 samples (3.3333 %)
+	low-severe	 1 (1.6667 %)
+	low-mild	 1 (1.6667 %)
+ Variance from outliers : 1.6389 % Variance is slightly inflated by outliers
+
+Goal:  reverse-string
+-----
+Case:  :default
+Evaluation count : 14702760 in 60 samples of 245046 calls.
+             Execution time mean : 4.080569 µs
+    Execution time std-deviation : 8.423772 ns
+   Execution time lower quantile : 4.065956 µs ( 2.5%)
+   Execution time upper quantile : 4.095605 µs (97.5%)
+
+Found 2 outliers in 60 samples (3.3333 %)
+	low-severe	 1 (1.6667 %)
+	low-mild	 1 (1.6667 %)
+ Variance from outliers : 1.6389 % Variance is slightly inflated by outliers
+
+Goal:  reverse-words
+-----
+Case:  :default
+Evaluation count : 429837840 in 60 samples of 7163964 calls.
+             Execution time mean : 140.185691 ns
+    Execution time std-deviation : 0.523747 ns
+   Execution time lower quantile : 139.618243 ns ( 2.5%)
+   Execution time upper quantile : 140.899692 ns (97.5%)
+
+Found 2 outliers in 60 samples (3.3333 %)
+	low-severe	 1 (1.6667 %)
+	low-mild	 1 (1.6667 %)
+ Variance from outliers : 1.6389 % Variance is slightly inflated by outliers
+

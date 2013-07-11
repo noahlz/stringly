@@ -44,17 +44,25 @@
 (defcase bench-decimal-string? :false-case
   [] (decimal-string? "1.000005-"))
 
+;; Test input strings are padded to the same length so we can 
+;; see how # of matches affects performance. 
 (defgoal bench-longest-common-substrings "longest-common-substrings")
 (defcase bench-longest-common-substrings :no-matches
-  [] (longest-common-substrings "AAAAAAA" "CCCCCCC"))
+  [] (longest-common-substrings "AAAAAAA^XXXXXXXXXX"
+                                "CCCCCCC^ZZZZZZZZZZ"))
 (defcase bench-longest-common-substrings :one-match
-  [] (longest-common-substrings "AACCCAA" "BBCCCBB"))
+  [] (longest-common-substrings "ABCDDDD^XXXXXXXXXX" 
+                                "QRSDDDD^ZZZZZZZZZZ"))
 (defcase bench-longest-common-substrings :multiple-matches
-  [] (longest-common-substrings "AABBCCDD" "AAZZXXDD"))
+  [] (longest-common-substrings "AABBCCDD^ZZZZZZZZZ" 
+                                "AABBCCDD^XXXXXXXXX"))
+(defcase bench-longest-common-substrings :progressively-longer-matches
+  [] (longest-common-substrings "ABBCCCDDDDEEEEE^ZZ" 
+                                "ABBCCCDDDDEEEEE^XX"))
 (defcase bench-longest-common-substrings :one-match-longest-at-end
-  [] (longest-common-substrings "AABBCCDDEEFFFFFFFF"
-                                "ZZBBYYDDXXFFFFFFFF"))
+  [] (longest-common-substrings "AABBCCDDE^FFFFFFFF"
+                                "TTUUVVWWX^FFFFFFFF"))
 (defcase bench-longest-common-substrings :one-match-longest-at-end-java-close-to-the-metal
   [] (binding [*close-to-the-metal* true] 
-       (longest-common-substrings "AABBCCDDEEFFFFFFFF"
-                                  "ZZBBYYDDXXFFFFFFFF")))
+       (longest-common-substrings "AABBCCDDE^FFFFFFFF"
+                                  "TTUUVVWWX^FFFFFFFF")))
