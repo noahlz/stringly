@@ -1,5 +1,7 @@
 package stringly.core;
 
+import java.util.*;
+
 /**
  * Drop down into Java to get close to the metal.
  */
@@ -59,6 +61,43 @@ public final class Util {
         System.out.println("input:  " + args[0]);
         String result = reverseWords(args[0]);
         System.out.println("output: " + result);
+    }
+
+    /**
+     * Java LCS implementation for benchmarking vs Clojure.
+     */
+    public static Collection<String> longestCommonsSubstring(String s1, String s2) {
+
+        int[][] table = new int[s1.length()][s2.length()];
+        int maxlen = 0;
+        Set<String> results = new HashSet<>(); 
+
+        for (int i = 0; i < s1.length(); i++) {
+            for (int j = 0; j < s2.length(); j++)  {
+                if (s1.charAt(i) == s2.charAt(j)) {
+
+                    int currlongest;
+                    if (i == 0 || j == 0) {
+                        currlongest = 1;
+                    } else {
+                        currlongest = 1 + table[i - 1][j - 1]; 
+                    }
+                    table[i][j] = currlongest;
+                    
+                    if (currlongest > maxlen) {
+                       maxlen = currlongest;
+                       results = new HashSet<>();
+                    }
+
+                    if (currlongest >= maxlen) {
+                       String substr = s1.substring(1 + i - maxlen, i + 1);
+                       results.add(substr);
+                    }
+                }
+            }
+        }
+
+        return results;
     }
 }
 

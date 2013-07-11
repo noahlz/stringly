@@ -54,3 +54,7 @@
 (defcase bench-longest-common-substrings :one-match-longest-at-end
   [] (longest-common-substrings "AABBCCDDEEFFFFFFFF"
                                 "ZZBBYYDDXXFFFFFFFF"))
+(defcase bench-longest-common-substrings :one-match-longest-at-end-java-close-to-the-metal
+  [] (binding [*close-to-the-metal* true] 
+       (longest-common-substrings "AABBCCDDEEFFFFFFFF"
+                                  "ZZBBYYDDXXFFFFFFFF")))

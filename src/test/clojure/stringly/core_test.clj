@@ -33,9 +33,17 @@
   (longest-common-substrings "ZZZZzzzZZZCA" "C") => ["C"]
   (longest-common-substrings "" "A") => empty?
   (longest-common-substrings "A" "") => empty?
-  (longest-common-substrings "AAATABBD" "AAAZABBC") => (contains  #{"AAA" "ABB"})
-  (longest-common-substrings "AABBAACC" "ZAAZBBZCC") => (contains  #{"AA" "BB" "CC"})
+  (longest-common-substrings "AAATABBD" "AAAZABBC") => (contains  ["AAA" "ABB"] :in-any-order)
+  (longest-common-substrings "AABBAACC" "ZAAZBBZCC") => (contains  ["AA" "BB" "CC"] :in-any-order)
   (longest-common-substrings "AABBCCDDEEFFFFFFFF"
                              "ZZBBYYDDXXFFFFFFFF") => ["FFFFFFFF"]
   (longest-common-substrings "AABBCCDDEEFFFFFFFF"
-                             "FFFFFFFFZZBBYYDDXX") => ["FFFFFFFF"])
+                             "FFFFFFFFZZBBYYDDXX") => ["FFFFFFFF"]
+
+  (binding [*close-to-the-metal* true] 
+    (longest-common-substrings "AABBAACC" "ZAAZBBZCC")) 
+       => (contains  ["AA" "BB" "CC"] :in-any-order)
+
+  (binding [*close-to-the-metal* true] 
+    (longest-common-substrings "AABBCCDDEEFFFFFFFF"
+                               "FFFFFFFFZZBBYYDDXX")) => ["FFFFFFFF"])
