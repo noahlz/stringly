@@ -28,6 +28,6 @@
                            {:init (do (use 'midje.repl) (autotest))}}]
              :perf {:plugins [[perforate "0.3.2"]]}}
 
-  :aliases {"midje" ["with-profile" "test" "midje"]
-            "test" ["with-profile" "test" "midje"]
-            "perf" ["with-profile" "perf" "perforate"]})
+  :aliases {"midje" ["with-profile" "+test" "midje"]
+            "test" ["with-profile" "+test" "midje"]
+            "perf" ["with-profile" "+perf" "perforate"]})
