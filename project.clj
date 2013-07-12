@@ -12,8 +12,6 @@
   :java-source-paths ["src/main/java"]
   :resource-paths    ["src/main/resources"]
 
-  :jvm-opts ["-server"]
-
   :injections [(require 'clojure.pprint)]
 
   :plugins [[lein-ring "0.8.5" :exclusions [org.clojure/clojure]]]

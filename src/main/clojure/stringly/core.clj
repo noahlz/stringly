@@ -91,25 +91,29 @@
 ;; and this StackOverflow answer: http://stackoverflow.com/a/14958791/7507
 ;; Also see this Clojure mailing list discussion on performance: 
 ;; https://groups.google.com/forum/#!topic/clojure/byHO-9t6X4U[1-25-false]
-(defn- find-lcs-fn [^String s1 ^String s2 ^longs table]
+;; @cgrand's blog post on multidimensional arrays and reflection:
+;; http://clj-me.cgrand.net/2009/10/15/multidim-arrays/
+(defn- find-lcs-fn [^String s1 ^String s2 ^objects table]
   (second  
-    (binding [*unchecked-math* true]
-      (let [^chars arr1 (.toCharArray s1) ^chars arr2 (.toCharArray s2)]
+    (let [^chars arr1 (.toCharArray s1) ^chars arr2 (.toCharArray s2)]
+      (binding [*unchecked-math* true])
         (areduce arr1 i ret1 [0 #{}]
           (areduce arr2 j ret2 ret1 
             (let [[z result] ret2] 
-              (if (= (aget arr1 i) (aget arr2 j))
-                (let [curr-longest (aset-long table i j 
+              (if (= ^char (aget arr1 i) ^char (aget arr2 j))
+                (let [curr-row     ^longs (aget table i)
+                      curr-longest (aset-long curr-row j 
                                      (if (or (zero? i) (zero? j))
-                                       1
-                                       ^long (inc (aget table (dec i) (dec j))))) 
+                                       1 
+                                       (inc (-> ^longs (aget table (dec i)) 
+                                                (aget (dec j)))))) 
                       longer-than-z? (> curr-longest z)
                       z              (if longer-than-z? curr-longest z)
                       result         (if longer-than-z? #{} result)]
                   [z (if (>= curr-longest z) 
                        (conj result (.substring s1 (inc (- i z)) (inc i))) 
                        result)])
-                [z result]))))))))
+                [z result])))))))
 
 (defn ^:api longest-common-substrings 
   "Returns vector of longest common substrings for the two input strings."
