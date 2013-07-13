@@ -1,2 +1,10 @@
 language: clojure
 lein: lein2
+deploy:
+  provider: heroku
+  api_key:
+    secure: ! 'iGbr2hRji/PnX8DAwT5tCvy4SVgM0FymBdk0PAnHnGG1DbGbkY7If68r/UjE
+
+      rFFfL2Um18YEUslPdQJ9gzTWf+z98u1pXlzXC1xNuWgTKgwkg9cwnXBGqsH+
+
+      FItRfsLscGTIHISjJRIfLreZwTXWyvgDkLvJDhnXTixc1xU8gL4='
