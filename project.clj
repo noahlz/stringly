@@ -24,7 +24,9 @@
                     :plugins [[lein-midje "3.0.1"]]}
              :dev [:test {:repl-options
                            {:init (do (use 'midje.repl) (autotest))}}]
-             :perf {:plugins [[perforate "0.3.2"]]}}
+             :perf {:plugins [[perforate "0.4.0-SNAPSHOT"]]}}
+                    ;; waiting on Perforate pull-request 6
+                    ;; :perforate {:source-paths ["src/bench/clojure"]}}}
 
   :aliases {"midje" ["with-profile" "+test" "midje"]
             "test" ["with-profile" "+test" "midje"]
