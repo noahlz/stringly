@@ -18,11 +18,21 @@ Anyway, this little web application provides an interface to several common stri
 
 - [Leiningen 2](https://github.com/technomancy/leiningen/)
 
-## Running
+## Running the Web Server
 
-To start a web server for the application, run the provided start.sh script or
+To start a web server for the application, run the provided `start.sh` script or
 
     lein trampoline ring server-headless
+
+## Running the Benchmarks
+
+This project also comes with a [Perforate](https://github.com/davidsantiago/perforate) benchmarking suite for each of the `stringly.core` namespace functions. After modifying these functions, you can benchmark the performance of your changes using the command
+
+    lein perf
+
+Running the benchmark can take upwards of 10 or 20 minutes based on the quality of your test machine. Some output from past benchmarks (on an admittedly rather old laptop) are located under `benchmarks-hist/`. 
+
+Also note that a few Clojure functions in `stringly.core` actually delegate to Java code (to be "close to the metal"), providing interesting comparisons of Java vs. Clojure peformance (Clojure can get pretty close to Java, but it sometimes takes some gnarly, non-idiomatic code).
 
 ## Continuous Integration
 
