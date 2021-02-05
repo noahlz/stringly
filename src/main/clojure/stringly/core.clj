@@ -48,6 +48,10 @@
     (let [xs (partition-by identity s)]
       (reduce #(if (> (count %1) (count %2)) %1 %2) '() xs))))
 
+(defn ^:api partition-count [s]
+  "https://twitter.com/Al_Grigor/status/1357028887209902088"
+  (->> (partition-by identity s) (map frequencies) seq))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; decimal-string?
 

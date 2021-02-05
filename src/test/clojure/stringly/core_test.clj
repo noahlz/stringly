@@ -14,6 +14,7 @@
   (substring? "aa" "bbaacc") => true
   (substring? "aa" "bbabcc") => false
   (longest-repeated-string "abbbbccccdeeeeeef") => "eeeeee"
+  (partition-count  "aaaabbbcca") => [{\a 4} {\b 3} {\c 2} {\a 1}]
   (decimal-string? "1")   => true
   (decimal-string? "a")   => false
   (decimal-string? "-1")  => true
